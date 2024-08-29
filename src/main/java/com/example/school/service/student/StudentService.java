@@ -12,4 +12,6 @@ public interface StudentService {
     StudentDto getStudentById(Long id);
 
     List<StudentDto> getByNameAll(String name);
+
+    void deleteStudentById(Long id);
 }

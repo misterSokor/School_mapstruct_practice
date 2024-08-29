@@ -61,4 +61,11 @@ public class StudentServiceImpl implements StudentService {
                 .map(student -> studentMapper.toDto(student))
                 .toList();
     }
+
+    @Override
+    public void deleteStudentById(Long id) {
+        studentRepository.deleteById(id);
+    }
+
+
 }

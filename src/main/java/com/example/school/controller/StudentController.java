@@ -6,6 +6,7 @@ import com.example.school.dto.student.StudentDto;
 import com.example.school.service.student.StudentService;
 import jakarta.servlet.http.HttpServlet;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +39,10 @@ public class StudentController extends HttpServlet {
     @GetMapping("/by-name")
     public List<StudentDto> getStudentsByName(@RequestParam String name) {
         return studentService.getByNameAll(name);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
     }
 }
