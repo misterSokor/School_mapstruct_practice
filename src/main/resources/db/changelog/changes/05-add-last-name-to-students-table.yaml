@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-last-name-to-students-table.yaml
+      author: Peter Sokor
+      changes:
+        - addColumn:
+            tableName: students
+            columns:
+              - column:
+                  name: lastName
+                  type: varchar(255)
+
+
+
+

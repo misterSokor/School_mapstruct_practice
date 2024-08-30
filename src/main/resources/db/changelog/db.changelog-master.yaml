@@ -7,3 +7,6 @@ databaseChangeLog:
       file: db/changelog/changes/03-create-students-table.yaml
   - include:
       file: db/changelog/changes/04-create-students-skill-of-student-table.yaml
+  - include:
+      file: db/changelog/changes/05-add-last-name-to-students-table.yaml
+
