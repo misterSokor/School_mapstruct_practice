@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-students-table
+      author: Peter Sokor
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: school
+                  type: varchar(255)
+              - column:
+                  name: grade_id
+                  type: BIGINT
+              - column:
+                  name: is_deleted
+                  type: BIT
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false

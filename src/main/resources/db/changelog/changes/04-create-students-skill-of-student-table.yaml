@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-students-skill-of-student-table
+      author: Peter Sokor
+      changes:
+        - createTable:
+            tableName: students_skill_of_student
+            columns:
+              - column:
+                  name: student_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: skill_of_student_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-grades-table
+      author: Peter Sokor
+      changes:
+        - createTable:
+            tableName: grades
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: num_of_grade
+                  type: BIGINT

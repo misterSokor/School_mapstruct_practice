@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-skills-table
+      author: Peter Sokor
+      changes:
+        - createTable:
+            tableName: skills
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
