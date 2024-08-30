@@ -1,0 +1,59 @@
+liquibase:
+step to set it up:
+1 add to pom.xml file these dependencies and plugin:
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>${liquibase.version}</version>
+                    <configuration>
+                        <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+2   Create the db.changelog-master.yaml file and locate it at this path:
+/src/main/resources/db/changelog/db.changelog-master.yaml
+Inside this file, include the order of change files like this:
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/01-create-grades-table.yaml
+  - include:
+      file: db/changelog/changes/02-create-skills-table.yaml
+  - include:
+
+3 Create a new folder changes in the directory resources/db/changelog/ for files with changes:
+  Create files with the .yaml extension for each change (e.g., 01-create-grades-table.yaml).
+
+4 Create the liquibase.properties file and add the following content to it:
+url=jdbc:mysql://localhost:3306/school_db?serverTimezone=America/Chicago
+username=root
+password=kolobok0202
+changeLogFile=db/changelog/db.changelog-master.yaml
+driver=com.mysql.cj.jdbc.Driver
+
+5 run command mvn clean package for cleaning and building your project
+and to apply Liquibase changes, you need to use:
+mvn liquibase:update
+
+6 In case you need to clear checksums using the Terminal, run this command:
+run command:
+./mvnw liquibase:clearCheckSums
+
+7 in application.properties to ensure that you have changed ddl.auto to
+spring.jpa.hibernate.ddl-auto=validate
+
